@@ -1,0 +1,55 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    /*
+     * Complete the timeConversion function below.
+     */
+    static String timeConversion(String s) {
+        /*
+         * Write your code here.
+         */
+        int  hour;
+        String min , sec ;
+        hour = Integer.parseInt(s.substring(0,2));
+        min = s.substring(3,5);
+        sec = s.substring(6,8);
+
+        if(s.endsWith("PM"))
+        {   
+            if(hour == 12)
+                return hour+":"+min+":"+sec;
+                
+            int hours = hour+12;
+            String out = String.format("%02d",hours);
+            return out+":"+min+":"+sec; 
+        }
+        else{
+            if(hour == 12)
+                hour = hour -12;
+            String out = String.format("%02d",hour);
+            return out+":"+min+":"+sec;
+        }
+         
+
+    }
+
+    private static final Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scan.nextLine();
+
+        String result = timeConversion(s);
+
+        bw.write(result);
+        bw.newLine();
+
+        bw.close();
+    }
+}
