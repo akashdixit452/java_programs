@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.*;
+
+class Solution{
+     static int power(int N, int P) 
+    { 
+        int pow = 1; 
+        for (int i = 1; i <= P; i++) 
+            pow *= N; 
+        return pow; 
+    } 
+    public static void main(String []argh){
+        Scanner in = new Scanner(System.in);
+        int t=in.nextInt();
+        
+        for(int i=0;i<t;i++){
+            int a = in.nextInt();
+            int b = in.nextInt();
+            int n = in.nextInt();
+            int count = a+power(2,0)*b;
+            for(int j=1;j<=n;j++){
+                System.out.print(count+" ");
+                count = count +power(2,j)*b;
+               
+            }
+             System.out.println();
+        }
+        in.close();
+    }
+}
