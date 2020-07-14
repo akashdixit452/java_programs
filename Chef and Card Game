@@ -1,0 +1,53 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception{
+	
+	
+		// your code goes here
+		
+		    BufferedReader reader =new BufferedReader(new InputStreamReader(System.in));
+		    int testcase = Integer.parseInt(reader.readLine());
+		    while(testcase-->0){
+		        int n = Integer.parseInt(reader.readLine());
+		        int chef=0,morty=0;
+		        for(int i=0;i<n;i++){
+		            String[] s = reader.readLine().split(" ");
+		            int a = Integer.parseInt(s[0]);
+		            int b = Integer.parseInt(s[1]);
+		            if(digit_sum(a)>digit_sum(b))
+		                chef++;
+		            else if(digit_sum(a)==digit_sum(b)){
+		                chef++;
+		                morty++;
+		            }
+		           else 
+		                morty++;
+		        }
+		       if(chef>morty)
+		            System.out.println("0"+" "+chef);
+		       else if(chef == morty)
+		            System.out.println("2"+" "+chef);
+		      else  
+		            System.out.println("1"+" "+morty);
+		    }
+		
+	
+	}
+	static int digit_sum(int m){
+	    int sum =0;
+	    while(m > 0)
+        {
+        
+            sum = sum + m%10;
+            m = m / 10;
+        }
+      return sum;
+	}
+}
