@@ -1,0 +1,54 @@
+//This is The Coding Area
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Swayamvar{
+
+   public static void main(String[] args){
+      try{
+        BufferedReader inp = new BufferedReader (new InputStreamReader(System.in));
+        int N= Integer.parseInt(inp.readLine());
+        String bride = inp.readLine();
+        String groom = inp.readLine();
+        List<Character>  brides = convertStringToCharList(bride);
+        List<Character>  grooms = convertStringToCharList(groom);
+        
+       int i =0,count =0;
+        while(i<brides.size())
+        {
+            int j=0;
+          while(j<grooms.size()){
+             boolean res = brides.get(i).equals(grooms.get(0));
+             if(res){
+                 count++;
+                 grooms.remove(0);
+                 break;
+             }
+            else if(res == false){
+              Collections.rotate(grooms, 1);
+              j++; 
+            }
+          }
+          i++;
+          if(i>count)
+            break;
+        }
+       System.out.print(N-count);
+      }
+     catch(Exception e){
+         return;
+     }
+   
+   }
+   public static List<Character> 
+    convertStringToCharList(String str) 
+    { 
+        List<Character> chars = new ArrayList<>(); 
+        for (char ch : str.toCharArray()) { 
+            chars.add(ch); 
+        } 
+        return chars; 
+    } 
+
+
+}
