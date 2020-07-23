@@ -1,0 +1,39 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		try{
+		    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		    int testcases = Integer.parseInt(in.readLine());
+		    while(testcases-->0){
+		        String[] s = in.readLine().split(" ");
+		        int n = Integer.parseInt(s[0]);
+		        int k = Integer.parseInt(s[1]);
+		        int a[] = new int[n+1];
+		     
+		        String str[] = in.readLine().split(" ");
+		        int arr[] = new int[str.length];
+		        for(int i=0;i<str.length;i++){
+		            arr[i] = Integer.parseInt(str[i]);
+		        }
+		      int sum =0;
+		      for(int i=0;i<k;i++){
+		          a[arr[i]]++;
+		      }
+		      for(int i=1;i<n+1;i++){
+		           sum+=a[i];
+		           System.out.print(sum+" ");
+		      }
+		      System.out.println();
+		    }
+		}
+		catch(Exception e){
+		    return;
+		}
+	}
+}
