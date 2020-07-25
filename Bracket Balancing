@@ -1,0 +1,73 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		try{
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		int test = Integer.parseInt(in.readLine());
+		while(test-->0)
+		{
+		    String s = in.readLine();
+		    Stack<Character> mystack = new Stack<>();
+		    boolean isBalanced = true;
+		    for(int i =0;i<s.length();i++)
+		        {
+		           
+		           if(s.charAt(i)=='{' || s.charAt(i)=='(' || s.charAt(i)=='['){
+		               mystack.push(s.charAt(i));
+		               continue;
+		           }
+		                
+		          
+		           if(mystack.empty()){
+		               isBalanced= false;
+		               break;
+		            }
+		            
+		          else if(s.charAt(i)=='}'){
+		              if(mystack.peek()=='{')
+		                  mystack.pop();
+		              else{
+		                  isBalanced = false;
+		                  break;
+		              }
+		          }
+		           else if(s.charAt(i)==')'){
+		              if(mystack.peek()=='(')
+		                  mystack.pop();
+		              else{
+		                  isBalanced = false;
+		                  break;
+		              }
+		          }
+		            else if(s.charAt(i)==']'){
+		              if(mystack.peek()=='[')
+		                  mystack.pop();
+		              else{
+		                  isBalanced = false;
+		                  break;
+		              }
+		          }
+		      }
+		      
+		      if(!mystack.empty())
+		           isBalanced = false;
+		      if(isBalanced)
+		           System.out.println("balanced");
+		      else
+		           System.out.println("not balanced");
+		      
+		  }
+		    
+		 }
+		
+		catch(Exception e){
+		    return;
+		}
+	}
+}
